@@ -1,0 +1,113 @@
+<th:block layout:decorate="~{layout/home}">
+    <th:block layout:fragment="content">
+        <div class="product-container">
+            <div class="container">
+                <div class="sidebar has-scrollbar " data-mobile-menu>
+                    <div class="sidebar-category">
+                        <div class="sidebar-top">
+                            <h2 class="sidebar-title">Perfil</h2>
+
+                            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+
+                        <ul class="sidebar-menu-category-list">
+                            <li class="sidebar-menu-category">
+                                <button class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <p class="menu-title">Perfil</p>
+                                    </div>
+                                </button>
+                                <button class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <p class="menu-title">Cartão</p>
+                                    </div>
+                                </button>
+                                <button class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <p class="menu-title">Endereço</p>
+                                    </div>
+                                </button>
+                                <button class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <p class="menu-title">Transações</p>
+                                    </div>
+                                </button>
+                                <button class="sidebar-accordion-menu" data-accordion-btn>
+                                    <div class="menu-title-flex">
+                                        <p class="menu-title">Alterar Senha</p>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
+                        <form action="" method="POST">
+                            <h3 class="text-center">Edit Personal Information</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">First Name:</label>
+                                        <input type="text" name="first_name" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">Last Name: </label>
+                                        <input type="text" name="last_name" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">Email Address:</label>
+                                        <input type="email" name="email" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">Mobile Number:</label>
+                                        <input type="tel" name="phone" class="form-control" value="" required
+                                               pattern=[0-9]{10}>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">Date Of Birth:</label>
+                                        <input type="date" name="birthday" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="profile_details_text">Nationality:</label>
+                                        <input type="text" name="nationality" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</th:block>
