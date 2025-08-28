@@ -6,10 +6,11 @@ public class User {
 
     private String name;
     private String gender;
-    private LocalDate
+    private LocalDate birthDate;
     private String cpf;
     private String phoneType;
     private String phone;
     private String email;
-    private String
+    private String password;
+    
 }
