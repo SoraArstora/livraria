@@ -24,4 +24,19 @@ public class HomeController {
         return new ModelAndView("pages/login");
     }
 
+    @GetMapping("/perfil")
+    public ModelAndView perfil() {
+        return new ModelAndView("pages/perfil");
+    }
+
+    @GetMapping("/endereco")
+    public ModelAndView endereco() {
+        return new ModelAndView("pages/endereco");
+    }
+
+    @GetMapping("/cartao")
+    public ModelAndView cartao() {
+        return new ModelAndView("pages/cartao");
+    }
+
 }

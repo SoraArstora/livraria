@@ -1,42 +1,37 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div class="modal fade" id="trocaSenhaModal" tabindex="-1" aria-labelledby="trocaSenhaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 15px;">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                <h5 class="modal-title" id="trocaSenhaModalLabel">Trocar Senha</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signup-email" type="email"
-                               placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
+            <div class="modal-body p-4">
 
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signup-password" type="text"
-                               placeholder="Password">
-                        <a href="#0" class="hide-password">Hide</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
+                <form>
 
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                    </p>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="senhaAtual">Senha Atual</label>
+                        <input type="password" id="senhaAtual" class="form-control form-control-lg" />
+                    </div>
 
-                    <a th:href="@{/perfil}">
-                        <p class="fieldset">
-                            <input type="button" class="full-width has-padding" value="Login Account">
-                        </p>
-                    </a>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="novaSenha">Nova Senha</label>
+                        <input type="password" id="novaSenha" class="form-control form-control-lg" />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="repitaNovaSenha">Repita a Nova Senha</label>
+                        <input type="password" id="repitaNovaSenha" class="form-control form-control-lg" />
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success btn-lg gradient-custom-4 text-body">
+                            Confirmar Troca
+                        </button>
+                    </div>
+
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#teste">Register
-                </button>
+
             </div>
         </div>
     </div>

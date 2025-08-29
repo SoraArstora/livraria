@@ -1,0 +1,34 @@
+<div class="sidebar has-scrollbar " data-mobile-menu>
+  <div class="sidebar-category">
+    <div class="sidebar-top">
+      <h2 class="sidebar-title">Perfil</h2>
+
+      <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="sidebar-menu-category-list">
+      <li class="sidebar-menu-category">
+
+        <a th:href="@{/perfil}" class="menu-title-flex">
+          <p class="menu-title">Perfil</p>
+        </a>
+
+        <a th:href="@{/cartao}" class="menu-title-flex">
+          <p class="menu-title">Cartão</p>
+        </a>
+
+        <a th:href="@{/endereco}" class="menu-title-flex">
+          <p class="menu-title">Endereço</p>
+        </a>
+
+        <button type="button" data-bs-toggle="modal" data-bs-target="#trocaSenhaModal">
+          <div class="menu-title-flex">
+            <p class="menu-title">Alterar Senha</p>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
