@@ -7,11 +7,15 @@
             <div class="info">
                 <a href="#" class="d-block">Alexander Pierce</a>
             </div>
+            <a th:href="@{/}" class="action-btn">
+                <i class="fa-solid fa-repeat"></i>
+            </a>
         </div>
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+                <!--
                 <li class="nav-header">Administração</li>
                 <li class="nav-item">
                     <a th:href="@{/admin}" class="nav-link">
@@ -21,6 +25,7 @@
                         </p>
                     </a>
                 </li>
+                -->
                 <li class="nav-header">Gestão</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -39,7 +44,49 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Livros
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a th:href="@{/admin/books}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Todos os livros</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a th:href="@{/admin/registerBook}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cadastro de livros</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Estatísticas
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a th:href="@{/admin/graphics}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gráficos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
 </aside>
+
+<script src="https://kit.fontawesome.com/d14433a352.js" crossorigin="anonymous"></script>

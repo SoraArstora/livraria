@@ -39,4 +39,9 @@ public class HomeController {
         return new ModelAndView("pages/cartao");
     }
 
+    @GetMapping("/cart")
+    public ModelAndView cart() {
+        return new ModelAndView("pages/cart");
+    }
+
 }

@@ -1,0 +1,106 @@
+<th:block layout:decorate="~{layout/admin}">
+  <th:block layout:fragment="style">
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  </th:block>
+  <th:block layout:fragment="content">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Users List</h3>
+        </div>
+        <div class="card-body">
+          <div id="users_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6"></div>
+              <div class="col-sm-12 col-md-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="users_table" class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="users_table_info">
+                  <thead>
+                  <tr>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="users_table"
+                        rowspan="1"
+                        colspan="1" aria-sort="ascending"
+                        aria-label="Rendering engine: activate to sort column descending">Title
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                        colspan="1"
+                        aria-label="Browser: activate to sort column ascending">Category
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending">Pages
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                        colspan="1"
+                        aria-label="Engine version: activate to sort column ascending">Status
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                        colspan="1"
+                        aria-label="Engine version: activate to sort column ascending">Ações
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="odd">
+                    <td class="dtr-control sorting_1" tabindex="0">O Espreitador</td>
+                    <td>Terror</td>
+                    <td>350</td>
+                    <td><span class="badge badge-primary">Ativo</span></td>
+                    <td>
+                      <button type="button" class="btn btn-primary">
+                        <i class="fas fa-pencil-alt"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger" onclick="showAlert()">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+  <th:block layout:fragment="script">
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/plugins/jszip/jszip.min.js"></script>
+    <script src="/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script>
+      $('#users_table').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+      });
+
+      function showAlert() {
+          Swal.fire({
+              title: "Deseja Deletar?",
+              text: "Isso será irreversivel",
+              showCancelButton: true,
+              confirmButtonText: "Sim, deletar!",
+              icon: "warning"
+          });
+      }
+    </script>
+  </th:block>
+</th:block>

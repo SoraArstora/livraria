@@ -17,10 +17,14 @@
                     <ion-icon name="person-outline"></ion-icon>
                 </a>
 
-                <button class="action-btn">
+                <a th:href="@{/cart}" class="action-btn">
                     <ion-icon name="bag-handle-outline"></ion-icon>
-                    <span class="count">0</span>
-                </button>
+                    <span class="count">1</span>
+                </a>
+
+                <a th:href="@{/admin/users}" class="action-btn">
+                    <i class="fa-solid fa-repeat"></i>
+                </a>
             </div>
 
         </div>
