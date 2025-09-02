@@ -5,18 +5,18 @@
     <th:block layout:fragment="content">
         <div class="form-outline mb-4 d-flex gap-3">
             <div class="w-50">
-                <label class="form-label" for="startDate">Start Date</label>
+                <label class="form-label" for="startDate">Data de Inicio</label>
                 <input type="date" id="startDate" class="form-control form-control-lg"/>
             </div>
             <div class="w-50">
-                <label class="form-label" for="finalDate">Final Date</label>
+                <label class="form-label" for="finalDate">Data Final</label>
                 <input type="date" id="finalDate" class="form-control form-control-lg"/>
             </div>
         </div>
 
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                Filter
+                Filtrar
             </button>
         </div>
         <br>
@@ -68,28 +68,8 @@
         <script src="/plugins/chart.js/Chart.min.js"></script>
 
         <script>
-            $('#users_table').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-
-            function showAlert() {
-                Swal.fire({
-                    title: "Deseja Deletar?",
-                    text: "Isso será irreversivel",
-                    showCancelButton: true,
-                    confirmButtonText: "Sim, deletar!",
-                    icon: "warning"
-                });
-            }
-
             var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
       datasets: [
         {
           label               : 'Digital Goods',

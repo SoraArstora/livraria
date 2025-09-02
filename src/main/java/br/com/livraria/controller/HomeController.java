@@ -29,14 +29,14 @@ public class HomeController {
         return new ModelAndView("pages/perfil");
     }
 
-    @GetMapping("/endereco")
+    @GetMapping("/address")
     public ModelAndView endereco() {
-        return new ModelAndView("pages/endereco");
+        return new ModelAndView("pages/address");
     }
 
-    @GetMapping("/cartao")
+    @GetMapping("/card")
     public ModelAndView cartao() {
-        return new ModelAndView("pages/cartao");
+        return new ModelAndView("pages/card");
     }
 
     @GetMapping("/cart")
