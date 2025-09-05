@@ -9,19 +9,18 @@
                             <div class="card" style="border-radius: 15px;">
                                 <div class="card-body p-5">
                                     <h2 class="text-uppercase text-center mb-5">Cadastro</h2>
-
-                                    <form>
+                                    <form action="#" th:action="@{/user/create}" th:object="${user}" method="post">
 
                                         <!-- Dados Pessoais -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="name">Nome</label>
-                                            <input type="text" id="name" class="form-control form-control-lg" />
+                                            <input type="text" id="name" class="form-control form-control-lg" th:field="*{name}" />
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="gender">Gênero</label>
-                                            <select id="gender" class="form-control form-control-lg">
-                                                <option disabled selected>Selecione</option>
+                                            <select id="gender" class="form-control form-control-lg" th:field="*{gender}">
+                                                <option value="" disabled selected>Selecione</option>
                                                 <option value="masculino">Masculino</option>
                                                 <option value="feminino">Feminino</option>
                                                 <option value="outro">Outro</option>
@@ -30,44 +29,44 @@
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="birthDate">Data de Nascimento</label>
-                                            <input type="date" id="birthDate" class="form-control form-control-lg" />
+                                            <input type="date" id="birthDate" class="form-control form-control-lg" th:field="*{birthDate}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="cpf">CPF</label>
-                                            <input type="text" id="cpf" class="form-control form-control-lg" />
+                                            <input type="text" id="cpf" class="form-control form-control-lg" th:field="*{cpf}"/>
                                         </div>
 
                                         <div class="form-outline mb-4 d-flex gap-3">
                                             <div class="w-50">
                                                 <label class="form-label" for="phoneType">Tipo de Telefone</label>
-                                                <select id="phoneType" class="form-control form-control-lg">
-                                                    <option disabled selected>Selecione</option>
+                                                <select id="phoneType" class="form-control form-control-lg" th:field="*{phoneType}">
+                                                    <option value="" disabled selected>Selecione</option>
                                                     <option value="celular">Celular</option>
                                                     <option value="fixo">Fixo</option>
                                                 </select>
                                             </div>
                                             <div class="w-50">
                                                 <label class="form-label" for="phone">Telefone</label>
-                                                <input type="text" id="phone" class="form-control form-control-lg" />
+                                                <input type="text" id="phone" class="form-control form-control-lg" th:field="*{phone}"/>
                                             </div>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="email">Email</label>
-                                            <input type="email" id="email" class="form-control form-control-lg" />
+                                            <input type="email" id="email" class="form-control form-control-lg" th:field="*{email}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="password">Senha</label>
-                                            <input type="password" id="password" class="form-control form-control-lg" />
+                                            <input type="password" id="password" class="form-control form-control-lg" th:field="*{password}"/>
                                         </div>
 
                                         <!-- Endereço -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="residentType">Tipo de Residência</label>
-                                            <select id="residentType" class="form-control form-control-lg">
-                                                <option disabled selected>Selecione</option>
+                                            <select id="residentType" class="form-control form-control-lg" th:field="*{addresses[0].residentType}">
+                                                <option value="" disabled selected>Selecione</option>
                                                 <option value="casa">Casa</option>
                                                 <option value="apartamento">Apartamento</option>
                                             </select>
@@ -75,8 +74,8 @@
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="streetType">Tipo de Logradouro</label>
-                                            <select id="streetType" class="form-control form-control-lg">
-                                                <option disabled selected>Selecione</option>
+                                            <select id="streetType" class="form-control form-control-lg" th:field="*{addresses[0].streetType}">
+                                                <option value="" selected disabled>Selecione</option>
                                                 <option value="rua">Rua</option>
                                                 <option value="avenida">Avenida</option>
                                                 <option value="travessa">Travessa</option>
@@ -85,46 +84,46 @@
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="street">Logradouro</label>
-                                            <input type="text" id="street" class="form-control form-control-lg" />
+                                            <input type="text" id="street" class="form-control form-control-lg" th:field="*{addresses[0].street}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="number">Número</label>
-                                            <input type="text" id="number" class="form-control form-control-lg" />
+                                            <input type="text" id="number" class="form-control form-control-lg" th:field="*{addresses[0].number}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="neighbor">Bairro</label>
-                                            <input type="text" id="neighbor" class="form-control form-control-lg" />
+                                            <input type="text" id="neighbor" class="form-control form-control-lg" th:field="*{addresses[0].neighbor}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="cep">CEP</label>
-                                            <input type="text" id="cep" class="form-control form-control-lg" />
+                                            <input type="text" id="cep" class="form-control form-control-lg" th:field="*{addresses[0].cep}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="city">Cidade</label>
-                                            <input type="text" id="city" class="form-control form-control-lg" />
+                                            <input type="text" id="city" class="form-control form-control-lg" th:field="*{addresses[0].city}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="state">Estado</label>
-                                            <input type="text" id="state" class="form-control form-control-lg" />
+                                            <input type="text" id="state" class="form-control form-control-lg" th:field="*{addresses[0].state}"/>
                                         </div>
 
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="country">País</label>
-                                            <input type="text" id="country" class="form-control form-control-lg" value="Brasil" />
+                                            <input type="text" id="country" class="form-control form-control-lg" th:field="*{addresses[0].country}"/>
                                         </div>
 
                                         <div class="form-check d-flex justify-content-start mb-4">
-                                            <input class="form-check-input me-2" type="radio" id="" name="endereco"/>
-                                            <label class="form-check-label">Endereço de cobrança</label>
+                                            <input class="form-check-input me-2" type="radio" id="charge" name="endereco" th:value="true" th:field="*{addresses[0].charge}"/>
+                                            <label class="form-check-label" for="charge">Endereço de cobrança</label>
                                         </div>
                                         <div class="form-check d-flex justify-content-start mb-4">
-                                            <input class="form-check-input me-2" type="radio" id="" name="endereco"/>
-                                            <label class="form-check-label">Endereço de entrega</label>
+                                            <input class="form-check-input me-2" type="radio" id="delivery" name="endereco" th:value="false" th:field="*{addresses[0].charge}"/>
+                                            <label class="form-check-label" for="delivery">Endereço de entrega</label>
                                         </div>
 
                                         <div class="d-flex justify-content-center">
@@ -132,13 +131,12 @@
                                                 Cadastrar
                                             </button>
                                         </div>
-
-                                        <p class="text-center text-muted mt-5 mb-0">
-                                            Já tem uma conta?
-                                            <a th:href="@{/login}" class="fw-bold text-body"><u>Entrar</u></a>
-                                        </p>
-
                                     </form>
+
+                                    <p class="text-center text-muted mt-5 mb-0">
+                                        Já tem uma conta?
+                                        <a th:href="@{/login}" class="fw-bold text-body"><u>Entrar</u></a>
+                                    </p>
 
                                 </div>
                             </div>
@@ -147,5 +145,17 @@
                 </div>
             </div>
         </section>
+    </th:block>
+    <th:block layout:fragment="script">
+        <script>
+            $(document).ready(()=>{
+                $("#cpf").mask("000.000.000-00")
+                $("#cep").mask("00000000")
+            })
+
+            $("#date").datepicker({
+                dateFormat: "yy/mm/dd"
+            });
+        </script>
     </th:block>
 </th:block>

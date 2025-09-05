@@ -1,22 +1,36 @@
 package br.com.livraria.controller;
 
+import br.com.livraria.model.domain.User;
+import br.com.livraria.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
+@RequiredArgsConstructor
 public class AdminUserController {
+
+    private final UserService userService;
 
     @GetMapping("/users")
     public ModelAndView index() {
-        return new ModelAndView("pages/admin/user-list");
+        List<User> users = userService.findAll();
+        ModelAndView modelAndView = new ModelAndView("pages/admin/user-list");
+        modelAndView.addObject("users", users);
+        return modelAndView;
     }
 
-    @GetMapping("/users/{id}")
+    @PostMapping("/user/{id}")
+    public ModelAndView delete(@PathVariable Integer id){
+        userService.delete(id);
+        return new ModelAndView("redirect:/admin/users");
+    }
+
+    @GetMapping("/wasd")
     public ModelAndView index(@PathVariable Long id) {
         return new ModelAndView("pages/admin/user-edit");
     }
