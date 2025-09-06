@@ -26,7 +26,7 @@
             <th:block th:replace="~{fragments/profile/sidebar.html}"></th:block>
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
-                    <form action="" method="POST" th:object="${user}">
+                    <form action="" method="post" th:action="@{/user/update}" th:object="${user}">
                         <h3 class="text-center">Edição de Informação Pessoal</h3>
                         <!-- Dados Pessoais -->
                         <div class="form-outline mb-4">
@@ -102,6 +102,10 @@
         modal1.hide();
     });
 
+    $(document).ready(()=>{
+        $("#cpf").mask("000.000.000-00")
+        $("#cep").mask("00000000")
+    });
 </script>
 <th:block layout:fragment="script"></th:block>
 </body>

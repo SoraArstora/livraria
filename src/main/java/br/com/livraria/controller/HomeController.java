@@ -1,10 +1,13 @@
 package br.com.livraria.controller;
 
+import br.com.livraria.model.domain.Address;
 import br.com.livraria.model.domain.User;
 import br.com.livraria.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,21 +35,27 @@ public class HomeController {
 
     @GetMapping("/perfil")
     public ModelAndView perfil() {
-        User user = userService.findbyId(3);
+        User user = userService.findbyId(5);
         ModelAndView modelAndView = new ModelAndView("pages/perfil");
         modelAndView.addObject("user", user);
         return modelAndView;
     }
 
     @GetMapping("/address")
-    public ModelAndView endereco() {
-        return new ModelAndView("pages/address");
+    public ModelAndView address() {
+        User user = userService.findbyId(5);
+        ModelAndView modelAndView = new ModelAndView("pages/address");
+        modelAndView.addObject("addresses", user.getAddresses());
+        return modelAndView;
     }
 
     @GetMapping("/card")
-    public ModelAndView cartao() {
-        return new ModelAndView("pages/card");
-    }
+        public ModelAndView card() {
+            User user = userService.findbyId(5);
+            ModelAndView modelAndView = new ModelAndView("pages/card");
+            modelAndView.addObject("user", user);
+            return modelAndView;
+        }
 
     @GetMapping("/cart")
     public ModelAndView cart() {

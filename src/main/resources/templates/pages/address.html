@@ -24,81 +24,67 @@
     <div class="product-container">
         <div class="container">
             <th:block th:replace="~{fragments/profile/sidebar.html}"></th:block>
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
-                    <form action="" method="POST">
-                        <h3 class="text-center">Editar Endereço</h3>
-                        <!-- Dados Pessoais -->
-                        <!-- Endereço -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="residentType">Tipo de Residência</label>
-                            <select id="residentType" class="form-control form-control-lg">
-                                <option disabled selected>Selecione</option>
-                                <option value="casa">Casa</option>
-                                <option value="apartamento">Apartamento</option>
-                            </select>
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Endereços</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="users_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6"></div>
+                                <div class="col-sm-12 col-md-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="users_table" class="table table-bordered table-hover dataTable dtr-inline"
+                                           aria-describedby="users_table_info">
+                                        <thead>
+                                        <tr>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="users_table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">CEP
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Browser: activate to sort column ascending">Rua
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Platform(s): activate to sort column ascending">Número
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Engine version: activate to sort column ascending">Ações
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="address, i : ${addresses}" th:class="${i.even}? 'even' : 'odd'">
+                                            <td class="dtr-control sorting_1" tabindex="0" th:text="${address.cep}"></td>
+                                            <td th:text="${address.street}"></td>
+                                            <td th:text="${address.number}"></td>
+                                            <td>
+                                                <a th:href="@{/address/address-edit}" type="button" class="btn btn-primary">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <form onsubmit="showAlert(event)" method="post" action="#" th:action="@{address/{id}(id=${address.id})}">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a th:href="@{/address/address-create}" type="button" class="btn btn-primary">
+                                        <p>Adicionar novo endereço</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="streetType">Tipo de Logradouro</label>
-                            <select id="streetType" class="form-control form-control-lg">
-                                <option disabled selected>Selecione</option>
-                                <option value="rua">Rua</option>
-                                <option value="avenida">Avenida</option>
-                                <option value="travessa">Travessa</option>
-                            </select>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="street">Logradouro</label>
-                            <input type="text" id="street" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="number">Número</label>
-                            <input type="text" id="number" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="neighbor">Bairro</label>
-                            <input type="text" id="neighbor" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="cep">CEP</label>
-                            <input type="text" id="cep" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="city">Cidade</label>
-                            <input type="text" id="city" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="state">Estado</label>
-                            <input type="text" id="state" class="form-control form-control-lg" />
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="country">País</label>
-                            <input type="text" id="country" class="form-control form-control-lg" value="Brasil" />
-                        </div>
-
-                        <div class="form-check d-flex justify-content-start mb-4">
-                            <input class="form-check-input me-2" type="radio" id="" name="endereco"/>
-                            <label class="form-check-label">Endereço de cobrança</label>
-                        </div>
-                        <div class="form-check d-flex justify-content-start mb-4">
-                            <input class="form-check-input me-2" type="radio" id="" name="endereco"/>
-                            <label class="form-check-label">Endereço de entrega</label>
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                Cadastrar
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

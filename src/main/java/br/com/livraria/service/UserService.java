@@ -14,7 +14,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User findbyId(int id) {
+    public void create(br.com.livraria.model.domain.User user) {
+        user.getAddresses().forEach(address -> address.setUser(user));
+        userRepository.save(user);
+    }
+
+    public User findbyId(Integer id) {
         return userRepository.findById(id).get();
     }
 
@@ -22,9 +27,18 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void create(br.com.livraria.model.domain.User user) {
-        user.getAddresses().forEach(address -> address.setUser(user));
-        userRepository.save(user);
+    public void update(Integer id, User user) {
+        User oldUser = userRepository.findById(id).get();
+        oldUser.setName(user.getName());
+        oldUser.setGender(user.getGender());
+        oldUser.setBirthDate(user.getBirthDate());
+        oldUser.setCpf(user.getCpf());
+        oldUser.setPhoneType(user.getPhoneType());
+        oldUser.setPhone(user.getPhone());
+        oldUser.setEmail(user.getEmail());
+        oldUser.setPassword(user.getPassword());
+        oldUser.setStatus(user.getStatus());
+        userRepository.save(oldUser);
     }
 
     public void delete(int id) {

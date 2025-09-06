@@ -16,20 +16,6 @@ public class AdminUserController {
 
     private final UserService userService;
 
-    @GetMapping("/users")
-    public ModelAndView index() {
-        List<User> users = userService.findAll();
-        ModelAndView modelAndView = new ModelAndView("pages/admin/user-list");
-        modelAndView.addObject("users", users);
-        return modelAndView;
-    }
-
-    @PostMapping("/user/{id}")
-    public ModelAndView delete(@PathVariable Integer id){
-        userService.delete(id);
-        return new ModelAndView("redirect:/admin/users");
-    }
-
     @GetMapping("/wasd")
     public ModelAndView index(@PathVariable Long id) {
         return new ModelAndView("pages/admin/user-edit");
