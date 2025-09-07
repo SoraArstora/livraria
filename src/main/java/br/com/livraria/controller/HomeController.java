@@ -52,12 +52,12 @@ public class HomeController {
     }
 
     @GetMapping("/card")
-        public ModelAndView card() {
-            User user = userUtils.getAuthorizedUser();
-            ModelAndView modelAndView = new ModelAndView("pages/card");
-            modelAndView.addObject("user", user);
-            return modelAndView;
-        }
+    public ModelAndView card() {
+        User user = userUtils.getAuthorizedUser();
+        ModelAndView modelAndView = new ModelAndView("pages/card");
+        modelAndView.addObject("cards", user.getCards());
+        return modelAndView;
+    }
 
     @GetMapping("/cart")
     public ModelAndView cart() {

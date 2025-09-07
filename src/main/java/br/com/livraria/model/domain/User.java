@@ -32,9 +32,17 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Card> cards = new ArrayList<>();
+
     public void setAddresses(List<Address> addresses) {
         addresses.forEach(address -> address.setUser(this));
         this.addresses = addresses;
+    }
+
+    public void setCards(List<Card> cards) {
+        cards.forEach(card -> card.setUser(this));
+        this.cards = cards;
     }
 
 }

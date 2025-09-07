@@ -24,42 +24,67 @@
     <div class="product-container">
         <div class="container">
             <th:block th:replace="~{fragments/profile/sidebar.html}"></th:block>
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
-                    <form action="" method="POST">
-                        <h3 class="text-center">Editar Cartão</h3>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="cardNumber">Número do Cartão</label>
-                            <input type="text" id="cardNumber" class="form-control form-control-lg" placeholder="0000 0000 0000 0000" />
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de Cartões</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="users_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6"></div>
+                                <div class="col-sm-12 col-md-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="users_table" class="table table-bordered table-hover dataTable dtr-inline"
+                                           aria-describedby="users_table_info">
+                                        <thead>
+                                        <tr>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="users_table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">Número
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Browser: activate to sort column ascending">Nome
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Platform(s): activate to sort column ascending">Bandeira
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="users_table" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Engine version: activate to sort column ascending">Ações
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="card, i : ${cards}" th:class="${i.even}? 'even' : 'odd'">
+                                            <td class="dtr-control sorting_1" tabindex="0" th:text="${card.cardNumber}"></td>
+                                            <td th:text="${card.name}"></td>
+                                            <td th:text="${card.brand}"></td>
+                                            <td>
+                                                <a th:href="@{/card/edit/{id}(id=${card.id})}" type="button" class="btn btn-primary">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <form onsubmit="showAlert(event)" method="post" action="#" th:action="@{/card/{id}(id=${card.id})}">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a th:href="@{/card/create}" type="button" class="btn btn-primary">
+                                        <p>Adicionar novo cartão</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="cardName">Nome Impresso no Cartão</label>
-                            <input type="text" id="cardName" class="form-control form-control-lg"/>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="cardBrand">Bandeira do Cartão</label>
-                            <select id="cardBrand" class="form-control form-control-lg">
-                                <option disabled selected>Selecione</option>
-                                <option value="visa">Visa</option>
-                                <option value="mastercard">Mastercard</option>
-                                <option value="elo">Elo</option>
-                                <option value="amex">American Express</option>
-                            </select>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="securityCode">Código de Segurança (CVV)</label>
-                            <input type="text" id="securityCode" class="form-control form-control-lg" placeholder="Ex: 123" />
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                Salvar Cartão
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
