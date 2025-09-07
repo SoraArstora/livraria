@@ -66,10 +66,10 @@
                                             <td th:text="${address.street}"></td>
                                             <td th:text="${address.number}"></td>
                                             <td>
-                                                <a th:href="@{/address/address-edit}" type="button" class="btn btn-primary">
+                                                <a th:href="@{/address/edit/{id}(id=${address.id})}" type="button" class="btn btn-primary">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form onsubmit="showAlert(event)" method="post" action="#" th:action="@{address/{id}(id=${address.id})}">
+                                                <form onsubmit="showAlert(event)" method="post" action="#" th:action="@{/address/{id}(id=${address.id})}">
                                                     <button type="submit" class="btn btn-danger">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
@@ -78,7 +78,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <a th:href="@{/address/address-create}" type="button" class="btn btn-primary">
+                                    <a th:href="@{/address/create}" type="button" class="btn btn-primary">
                                         <p>Adicionar novo endereço</p>
                                     </a>
                                 </div>

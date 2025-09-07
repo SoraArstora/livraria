@@ -26,11 +26,11 @@
             <th:block th:replace="~{fragments/profile/sidebar.html}"></th:block>
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
-                    <form action="" method="post" th:action="@{/user/updatePersonal}" th:object="${user}">
+                    <form action="" method="post" th:action="@{/address/create}" th:object="${address}">
                         <h3 class="text-center">Adição de Endereço</h3>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="residentType">Tipo de Residência</label>
-                            <select id="residentType" class="form-control form-control-lg" >
+                            <select id="residentType" class="form-control form-control-lg" th:field="*{residentType}">
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="casa">Casa</option>
                                 <option value="apartamento">Apartamento</option>
@@ -39,7 +39,7 @@
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="streetType">Tipo de Logradouro</label>
-                            <select id="streetType" class="form-control form-control-lg" >
+                            <select id="streetType" class="form-control form-control-lg" th:field="*{streetType}">
                                 <option value="" selected disabled>Selecione</option>
                                 <option value="rua">Rua</option>
                                 <option value="avenida">Avenida</option>
@@ -49,51 +49,51 @@
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="street">Logradouro</label>
-                            <input type="text" id="street" class="form-control form-control-lg" />
+                            <input type="text" id="street" class="form-control form-control-lg" th:field="*{street}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="number">Número</label>
-                            <input type="text" id="number" class="form-control form-control-lg" />
+                            <input type="text" id="number" class="form-control form-control-lg" th:field="*{number}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="neighbor">Bairro</label>
-                            <input type="text" id="neighbor" class="form-control form-control-lg" />
+                            <input type="text" id="neighbor" class="form-control form-control-lg" th:field="*{neighbor}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="cep">CEP</label>
-                            <input type="text" id="cep" class="form-control form-control-lg"/>
+                            <input type="text" id="cep" class="form-control form-control-lg" th:field="*{cep}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="city">Cidade</label>
-                            <input type="text" id="city" class="form-control form-control-lg"/>
+                            <input type="text" id="city" class="form-control form-control-lg" th:field="*{city}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="state">Estado</label>
-                            <input type="text" id="state" class="form-control form-control-lg" />
+                            <input type="text" id="state" class="form-control form-control-lg" th:field="*{state}"/>
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="country">País</label>
-                            <input type="text" id="country" class="form-control form-control-lg"/>
+                            <input type="text" id="country" class="form-control form-control-lg" th:field="*{country}"/>
                         </div>
 
                         <div class="form-check d-flex justify-content-start mb-4">
-                            <input class="form-check-input me-2" type="radio" id="charge" name="endereco"/>
+                            <input class="form-check-input me-2" type="radio" id="charge" name="endereco" th:value="true" th:field="*{charge}"/>
                             <label class="form-check-label" for="charge">Endereço de cobrança</label>
                         </div>
                         <div class="form-check d-flex justify-content-start mb-4">
-                            <input class="form-check-input me-2" type="radio" id="delivery" name="endereco"/>
+                            <input class="form-check-input me-2" type="radio" id="delivery" name="endereco" th:value="false" th:field="*{charge}"/>
                             <label class="form-check-label" for="delivery">Endereço de entrega</label>
                         </div>
 
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                Editar
+                                Adicionar
                             </button>
                         </div>
                     </form>

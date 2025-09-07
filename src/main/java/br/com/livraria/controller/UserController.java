@@ -21,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/create")
-    public ModelAndView saveUser(User user){
+    public ModelAndView create(User user){
         userService.create(user);
         return new ModelAndView("redirect:/");
     }
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public ModelAndView updateUser(User user){
+    public ModelAndView update(User user){
         userService.update(5, user);
         return new ModelAndView("redirect:/perfil");
     }

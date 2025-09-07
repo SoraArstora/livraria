@@ -1,7 +1,10 @@
 package br.com.livraria.controller;
 
+import br.com.livraria.model.domain.Address;
+import br.com.livraria.model.domain.User;
 import br.com.livraria.service.AddressService;
 import br.com.livraria.service.UserService;
+import br.com.livraria.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,18 +20,37 @@ public class AddressController {
 
     private final UserService userService;
     private final AddressService addressService;
+    private final UserUtils userUtils;
 
-    @GetMapping("/address-create")
-    public ModelAndView addressCreate() { return new ModelAndView("pages/address-create"); }
+    @GetMapping("/create")
+    public ModelAndView view(Address address) {
+        return new ModelAndView("pages/address-create");
+    }
 
-    @GetMapping("/address-edit")
-    public ModelAndView addressEdit() {
-        return new ModelAndView("pages/address-edit");
+    @PostMapping("/create")
+    public ModelAndView create(Address address) {
+        address.setUser(userUtils.getAuthorizedUser());
+        addressService.create(address);
+        return new ModelAndView("redirect:/address");
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView update(@PathVariable Integer id) {
+        Address address = addressService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("pages/address-edit");
+        modelAndView.addObject("address", address);
+        return modelAndView;
+    }
+
+    @PostMapping("/edit/{id}")
+    public ModelAndView update(@PathVariable Integer id, Address address) {
+        addressService.update(id, address);
+        return new ModelAndView("redirect:/address");
     }
 
     @PostMapping("/{id}")
     public ModelAndView delete(@PathVariable Integer id){
-        userService.delete(id);
+        addressService.delete(id);
         return new ModelAndView("redirect:/address");
     }
 }
