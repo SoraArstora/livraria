@@ -1,6 +1,7 @@
 package br.com.livraria.service;
 
 import br.com.livraria.model.domain.User;
+import br.com.livraria.model.request.PasswordRequest;
 import br.com.livraria.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,13 @@ public class UserService {
         oldUser.setPhoneType(user.getPhoneType());
         oldUser.setPhone(user.getPhone());
         oldUser.setEmail(user.getEmail());
-        oldUser.setPassword(user.getPassword());
         oldUser.setStatus(user.getStatus());
+        userRepository.save(oldUser);
+    }
+
+    public void updatePassword(Integer id, PasswordRequest passwordRequest){
+        User oldUser = userRepository.findById(id).get();
+        oldUser.setPassword(passwordRequest.getNewPassword());
         userRepository.save(oldUser);
     }
 

@@ -2,6 +2,7 @@ package br.com.livraria.controller;
 
 import br.com.livraria.model.domain.Address;
 import br.com.livraria.model.domain.User;
+import br.com.livraria.model.request.PasswordRequest;
 import br.com.livraria.service.UserService;
 import br.com.livraria.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,14 @@ public class HomeController {
         User user = userUtils.getAuthorizedUser();
         ModelAndView modelAndView = new ModelAndView("pages/card");
         modelAndView.addObject("cards", user.getCards());
+        return modelAndView;
+    }
+
+    @GetMapping("/password")
+    public ModelAndView password(PasswordRequest password) {
+        User user = userUtils.getAuthorizedUser();
+        ModelAndView modelAndView = new ModelAndView("pages/password");
+        //modelAndView.addObject("password", user.getPassword());
         return modelAndView;
     }
 
