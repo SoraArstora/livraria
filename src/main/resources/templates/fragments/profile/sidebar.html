@@ -36,17 +36,15 @@
     </ul>
   </div>
 </div>
-
-<th:block layout:fragment="script">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
   function showAlert(e) {
     e.preventDefault();
     Swal.fire({
-      title: "Deseja Deletar?",
+      title: "Deseja excluir conta?",
       text: "Isso será irreversível",
       showCancelButton: true,
-      confirmButtonText: "Sim, deletar!",
+      confirmButtonText: "Sim, excluir!",
       icon: "warning"
        }).then((result) => {
        if (result.isConfirmed) {
@@ -54,5 +52,4 @@
         }
     });
   }
-  </script>
-</th:block>
+</script>

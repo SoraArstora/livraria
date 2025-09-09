@@ -12,6 +12,6 @@ public class UserUtils {
     private final UserService userService;
 
     public User getAuthorizedUser(){
-        return userService.findbyId(5);
+        return userService.findbyId(6);
     }
 }

@@ -41,15 +41,17 @@ public class UserController {
 
     @PostMapping("/update")
     public ModelAndView update(User user){
-        userService.update(5, user);
+        Integer id = userUtils.getAuthorizedUser().getId();
+        userService.update(id, user);
         return new ModelAndView("redirect:/perfil");
     }
     @PostMapping("/updatePassword")
     public ModelAndView updatePassword(@Valid PasswordRequest passwordRequest, BindingResult result){
+        Integer id = userUtils.getAuthorizedUser().getId();
         if(result.hasErrors()) {
             return new ModelAndView("pages/password");
         }
-        userService.updatePassword(5, passwordRequest);
+        userService.updatePassword(id, passwordRequest);
         return new ModelAndView("redirect:/perfil");
     }
 

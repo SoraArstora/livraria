@@ -16,11 +16,6 @@ public class AdminUserController {
 
     private final UserService userService;
 
-    @GetMapping("/wasd")
-    public ModelAndView index(@PathVariable Long id) {
-        return new ModelAndView("pages/admin/user-edit");
-    }
-
     @GetMapping("/registerBook")
     public ModelAndView registerBook() {
         return new ModelAndView("pages/admin/registerBook");
@@ -34,6 +29,12 @@ public class AdminUserController {
     @GetMapping("/graphics")
     public ModelAndView graphics() {
         return new ModelAndView("pages/admin/graphics");
+    }
+
+    @PostMapping("/{id}")
+    public ModelAndView delete(@PathVariable Integer id){
+        userService.delete(id);
+        return new ModelAndView("redirect:/user/allUsers");
     }
 
 }
